@@ -1,0 +1,24 @@
+{
+  "students": [
+    {
+      "id": "3376",
+      "name": "Natnael Ayele",
+      "classid": "d7c1"
+    },
+    {
+      "id": "2612",
+      "name": "Meaza",
+      "classid": "d7c1"
+    },
+    {
+      "id": "1717",
+      "name": "Abebe",
+      "classid": "d7c1"
+    },
+    {
+      "id": "2612",
+      "name": "Kebede",
+      "classid": "d7c1"
+    }
+  ]
+}

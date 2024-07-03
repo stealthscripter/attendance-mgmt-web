@@ -1,0 +1,30 @@
+{
+  "attendance": [
+    {
+      "id": "9ead",
+      "date": "2024-07-16",
+      "students": [
+        {
+          "name": "Natnael Ayele",
+          "status": false,
+          "studentid": "3376"
+        },
+        {
+          "name": "Meaza",
+          "status": true,
+          "studentid": "2612"
+        },
+        {
+          "name": "Abebe",
+          "status": true,
+          "studentid": "1717"
+        },
+        {
+          "name": "Kebede",
+          "status": false,
+          "studentid": "2612"
+        }
+      ]
+    }
+  ]
+}
