@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import ClassView from '@/views/ClassView.vue'
 import StudentView from '@/views/StudentView'
 import Attendance from '@/views/Attendance.vue'
+import AttendanceDisplay from '@/views/AttendanceDisplay.vue'
 const routes = [
   {
     path: '/',
@@ -25,7 +26,15 @@ const routes = [
     name: 'attendance',
     component: Attendance,
     props: true
+  },
+  {
+    path: '/attend/:id',
+    name: 'attend',
+    component: AttendanceDisplay,
+    props: true
   }
+
+
 ]
 
 const router = createRouter({

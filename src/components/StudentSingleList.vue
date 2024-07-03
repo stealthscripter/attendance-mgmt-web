@@ -15,9 +15,7 @@ import { ref } from 'vue';
         setup(props ,{emits}){
             const status = ref(false)
             const attendToggle = () => {
-                status.value = !status.value
-                props.students.status = status.value
-                console.log(props.students)
+                status.value = !status.value           
             }
             return {status , attendToggle}
         }

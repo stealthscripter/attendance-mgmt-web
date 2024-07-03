@@ -2,18 +2,23 @@
     <h1>Yes Attendance</h1>
     <DatePick @updateDate="dateHandler"/>
     <p>Raw Date {{ myDate }}</p>
-    <div class="main" v-for="cls in classStudents" :key="cls.id">
+    <!-- <div class="main" v-for="cls in classStudents" :key="cls.id">
         <p class="name" @click="toggleAttendance(cls)">{{ cls.name }}</p>
-    </div>
+    </div> -->
+    <AttendanceList @toggleStatus="toggleAttendance" :classStudents="classStudents"/>
     <button @click="saveHandler">Save</button>
+    <router-link :to="{name: 'attend' , params: {id: id}}">
+        <button @click="viewHandler">View Attendance</button>
+    </router-link>
 </template>
 
 <script>
+import AttendanceList from '@/components/AttendanceList.vue'
 import DatePick from '@/components/DatePick.vue';
 import { onMounted, ref , computed } from 'vue';
 
 export default {
-    components: {DatePick},
+    components: {DatePick , AttendanceList},
     props: ['id'],
     setup(props){
         const attendanceList = ref([]);
@@ -44,6 +49,9 @@ export default {
             console.log(finalData.value);
         };
 
+        const viewHandler = () => {
+
+        }
         const toggleAttendance = (stud) => {
             const studentIndex = finalData.value.students.findIndex(student => student.studentid === stud.id);
             if (studentIndex !== -1) {
@@ -71,7 +79,7 @@ export default {
             .catch(err => console.log(err.message));
         };
 
-        return { classStudents, dateHandler, myDate, saveHandler , toggleAttendance };
+        return { classStudents, dateHandler, myDate, saveHandler ,finalData, toggleAttendance };
     }
 }
 </script>

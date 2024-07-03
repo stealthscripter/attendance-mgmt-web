@@ -25,6 +25,22 @@
           "studentid": "2612"
         }
       ]
+    },
+    {
+      "id": "3a49",
+      "date": "2024-07-03",
+      "students": [
+        {
+          "name": "Gemechu",
+          "status": true,
+          "studentid": "5161"
+        },
+        {
+          "name": "Chala",
+          "status": true,
+          "studentid": "4132"
+        }
+      ]
     }
   ]
 }
