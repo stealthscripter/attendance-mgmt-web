@@ -40,7 +40,7 @@
       };
   
       const dateFiltered = computed(() => {
-        return attendanceList.value.filter(attendance => attendance.date === myDate.value);
+        return attendanceList.value.filter(attendance => attendance.date === myDate.value && attendance.classid == props.id);
       });
   
       const view = () => {

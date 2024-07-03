@@ -43,6 +43,23 @@
           "studentid": "4132"
         }
       ]
+    },
+    {
+      "id": "4033",
+      "date": "2024-07-09",
+      "classid": "fc3e",
+      "students": [
+        {
+          "name": "Gemechu",
+          "status": false,
+          "studentid": "5161"
+        },
+        {
+          "name": "Chala",
+          "status": false,
+          "studentid": "4132"
+        }
+      ]
     }
   ]
 }
