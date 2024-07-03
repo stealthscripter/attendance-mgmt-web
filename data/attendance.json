@@ -1,8 +1,9 @@
 {
   "attendance": [
     {
-      "id": "9ead",
-      "date": "2024-07-16",
+      "id": "55b0",
+      "date": "2024-07-01",
+      "classid": "d7c1",
       "students": [
         {
           "name": "Natnael Ayele",
@@ -22,13 +23,14 @@
         {
           "name": "Kebede",
           "status": false,
-          "studentid": "2612"
+          "studentid": "2611"
         }
       ]
     },
     {
-      "id": "3a49",
-      "date": "2024-07-03",
+      "id": "b22a",
+      "date": "2024-07-01",
+      "classid": "fc3e",
       "students": [
         {
           "name": "Gemechu",

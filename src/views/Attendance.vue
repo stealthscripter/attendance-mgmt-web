@@ -2,9 +2,6 @@
     <h1>Yes Attendance</h1>
     <DatePick @updateDate="dateHandler"/>
     <p>Raw Date {{ myDate }}</p>
-    <!-- <div class="main" v-for="cls in classStudents" :key="cls.id">
-        <p class="name" @click="toggleAttendance(cls)">{{ cls.name }}</p>
-    </div> -->
     <AttendanceList @toggleStatus="toggleAttendance" :classStudents="classStudents"/>
     <button @click="saveHandler">Save</button>
     <router-link :to="{name: 'attend' , params: {id: id}}">
@@ -13,14 +10,14 @@
 </template>
 
 <script>
-import AttendanceList from '@/components/AttendanceList.vue'
+import AttendanceList from '@/components/AttendanceList.vue';
 import DatePick from '@/components/DatePick.vue';
-import { onMounted, ref , computed } from 'vue';
+import { onMounted, ref, computed } from 'vue';
 
 export default {
-    components: {DatePick , AttendanceList},
+    components: { DatePick, AttendanceList },
     props: ['id'],
-    setup(props){
+    setup(props) {
         const attendanceList = ref([]);
         const myDate = ref(new Date());
         const finalData = ref({ date: myDate.value, students: [] });
@@ -29,7 +26,7 @@ export default {
             fetch("http://localhost:3000/students")
                 .then(res => res.json())
                 .then(data => attendanceList.value = data)
-                .catch(err => console.log(err.message))
+                .catch(err => console.log(err.message));
         });
 
         const classStudents = computed(() => {
@@ -40,18 +37,16 @@ export default {
             myDate.value = data;
             finalData.value = {
                 date: myDate.value,
+                classid: props.id,
                 students: classStudents.value.map(student => ({
                     name: student.name,
                     status: false,
-                    studentid: student.id
+                    studentid: student.id,
                 }))
             };
             console.log(finalData.value);
         };
 
-        const viewHandler = () => {
-
-        }
         const toggleAttendance = (stud) => {
             const studentIndex = finalData.value.students.findIndex(student => student.studentid === stud.id);
             if (studentIndex !== -1) {
@@ -60,35 +55,50 @@ export default {
                 finalData.value.students.push({
                     name: stud.name,
                     status: true,
-                    studentid: stud.id
+                    studentid: stud.id,
                 });
             }
             console.log(finalData.value);
         };
 
-        const saveHandler = () => {
-            fetch("http://localhost:5000/attendance", {
-                method: 'POST',
-                headers: {'Content-Type' : 'application/json'},
-                body: JSON.stringify(finalData.value)
-            })
-            .then(response => response.json())
-            .then(responseData => {
-                console.log('Success:', responseData);
-            })
-            .catch(err => console.log(err.message));
+        const checkDate = async (date, classid) => {
+            const response = await fetch("http://localhost:5000/attendance");
+            const data = await response.json();
+            return data.some(record => 
+                new Date(record.date).toDateString() === new Date(date).toDateString() && record.classid === classid
+            );
         };
 
-        return { classStudents, dateHandler, myDate, saveHandler ,finalData, toggleAttendance };
+        const saveHandler = async () => {
+            const dateExists = await checkDate(finalData.value.date, props.id);
+            console.log('Date and ClassID exist:', dateExists);
+
+            if (!dateExists) {
+                fetch("http://localhost:5000/attendance", {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(finalData.value)
+                })
+                .then(response => response.json())
+                .then(responseData => {
+                    console.log('Success:', responseData);
+                })
+                .catch(err => console.log(err.message));
+            } else {
+                console.log('Date and ClassID already exist. Attendance not saved.');
+            }
+        };
+
+        return { classStudents, dateHandler, myDate, saveHandler, finalData, toggleAttendance };
     }
 }
 </script>
 
 <style scoped>
-.main{
+.main {
     margin: 0 auto;
 }
-.name{
+.name {
     border: 1px solid red;
     cursor: pointer;
 }
