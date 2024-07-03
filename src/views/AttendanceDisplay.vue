@@ -1,29 +1,32 @@
 <template>
+  <DatePick @update-date="dateHandler"/>
     <div>
-      <button @click="view">View Attendance for 2024-07-03</button>
-      <ul v-if="showAttendance">
-        <li v-for="attendance in dateFiltered" :key="attendance.id">
-          <p>Date: {{ attendance.date }}</p>
-          <ul>
-            <li v-for="student in attendance.students" :key="student.studentid">
-              {{ student.name }} - {{ student.status ? 'Present' : 'Absent' }}
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <p v-else>No attendance records found for 2024-07-03.</p>
+      <button @click="view">View Attendance for {{ myDate }}</button>
+      <div v-if="showAttendance">
+          <div v-for="attendance in dateFiltered">
+            <h3>Attendance Date {{ attendance.date }}</h3>
+            <p v-for="student in attendance.students">{{student.name }} &nbsp; {{ student.status ? "present" : "Absent"}}</p>
+          </div>
+      </div>
+      <p v-else>There is No Attendance</p>
     </div>
   </template>
   
   <script>
+  import DatePick from '@/components/DatePick.vue';
   import { onMounted, ref, computed } from 'vue';
   
   export default {
-    name: 'AttendanceView',
+    components: {DatePick},
     setup() {
       const attendanceList = ref([]);
       const showAttendance = ref(false);
-  
+      const myDate = ref("")
+      
+      const dateHandler = (date) => {
+          myDate.value = date
+      }
+
       const fetchData = () => {
         fetch("http://localhost:5000/attendance")
           .then(res => res.json())
@@ -34,7 +37,7 @@
       };
   
       const dateFiltered = computed(() => {
-        return attendanceList.value.filter(attendance => attendance.date === '2024-07-16');
+        return attendanceList.value.filter(attendance => attendance.date === myDate.value);
       });
   
       const view = () => {
@@ -49,6 +52,8 @@
         dateFiltered,
         showAttendance,
         view,
+        dateHandler,
+        myDate
       };
     },
   };
