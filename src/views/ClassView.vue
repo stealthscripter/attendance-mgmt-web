@@ -1,10 +1,11 @@
 <template>
-    <h1>Class</h1>
-    <div v-if="showModal">
-        <ClassModal @close="toggleModal" @add="addClass"/>
+    <div class="class">
+        <div v-if="showModal">
+            <ClassModal @close="toggleModal" @add="addClass"/>
+        </div>
+        <button @click="toggleModal">Open</button>
+        <ClassList :classList="classList"/>
     </div>
-    <button @click="toggleModal">Open</button>
-    <ClassList :classList="classList"/>
 </template>
 
 
@@ -51,6 +52,10 @@
 
 
 <style>
-
-
+    .class{
+        padding: 1rem;
+        margin: 1rem auto;
+        width: 80%;
+        border: 1px solid red;
+    }
 </style>

@@ -1,6 +1,6 @@
 <template>
-    <h1>CLassList</h1>
-    <div v-for="classes in classList" :key="classes">
+
+    <div class="class-list" v-for="classes in classList" :key="classes">
         <ClassSingleList :classes="classes"/>
     </div>
 </template>
@@ -17,6 +17,9 @@ import ClassSingleList from './ClassSingleList.vue';
 </script>
 
 <style>
-
+.class-list{
+    padding: 0.5rem;
+    border: 1px solid rebeccapurple;
+}
 
 </style>

@@ -60,6 +60,33 @@
           "studentid": "4132"
         }
       ]
+    },
+    {
+      "id": "b2d6",
+      "date": "2024-07-23",
+      "classid": "d7c1",
+      "students": [
+        {
+          "name": "Natnael Ayele",
+          "status": true,
+          "studentid": "3376"
+        },
+        {
+          "name": "Meaza",
+          "status": true,
+          "studentid": "2612"
+        },
+        {
+          "name": "Abebe",
+          "status": true,
+          "studentid": "1717"
+        },
+        {
+          "name": "Kebede",
+          "status": true,
+          "studentid": "2611"
+        }
+      ]
     }
   ]
 }
