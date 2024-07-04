@@ -1,10 +1,12 @@
 <template>
-    <router-link :to="{name: 'StudentView' , params:{id: classes.id}}">
-    <div>
-        <p>{{ classes.course }}</p>
-        <p>{{ classes.section }}</p>
+    <div class="single-class-list">
+        <router-link :to="{name: 'StudentView' , params:{id: classes.id}}">
+            <div>
+                <p>{{ classes.course }}</p>
+                <p>{{ classes.section }}</p>
+            </div>
+        </router-link>
     </div>
-</router-link>
 </template>
 
 <script>
@@ -20,9 +22,13 @@
     div{
         cursor: pointer;
         padding: 10px;
-        margin: 0 auto;
+        margin: 1rem auto;
         width: fit-content;
         border: 1px solid black;
+    }
+    .single-class-list {
+        width: 90%;
+        border: 1px solid red;
     }
 
 </style>
