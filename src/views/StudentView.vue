@@ -1,18 +1,13 @@
 <template>
-    <h1>Student</h1>
     <router-link :to="{name: 'attendance' , params: {id: id}}" >
-        <button>Take Attendance</button>
+        <button class="btn">Take Attendance</button>
     </router-link>
-    <!-- <DatePick @updateDate="dateMeth"/> -->
-    <!-- <h1>date {{ mydate }}</h1> -->
     <br>
     <div v-if="showModal">
         <StudentModal @close="toggleModal" @add="addStudent"/>
-        <!-- <ClassModal @close="toggleModal" @add="addClass"/> -->
     </div>
-    <button @click="toggleModal">Open</button>
+    <button class="btn add-student" @click="toggleModal">Add Student</button>
     <StudentList :studentList="classStudents"/>
-    <!-- <ClassList :classList="classList"/> -->
 </template>
 
 <script>
@@ -73,12 +68,12 @@ export default {
 </script>
 
 <style>
-
-    button{
-        margin: 20px;
-    }
-    
     .date-pick{
         margin: 20px;
     }
+    .add-student{
+        background: rgb(164, 158, 158);
+        color: white;
+    }
+
 </style>

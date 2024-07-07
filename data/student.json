@@ -7,28 +7,33 @@
     },
     {
       "id": "2612",
-      "name": "Meaza",
+      "name": "Meaza Ayele",
       "classid": "d7c1"
     },
     {
       "id": "1717",
-      "name": "Abebe",
+      "name": "Abebe Getachew",
       "classid": "d7c1"
     },
     {
       "id": "2611",
-      "name": "Kebede",
+      "name": "Kebede Alemu",
       "classid": "d7c1"
     },
     {
       "id": "5161",
-      "name": "Gemechu",
+      "name": "Gemechu Chala",
       "classid": "fc3e"
     },
     {
       "id": "4132",
-      "name": "Chala",
+      "name": "Chala Gemechu",
       "classid": "fc3e"
+    },
+    {
+      "id": "5215",
+      "name": "Nicolas Bedlu",
+      "classid": "d7c1"
     }
   ]
 }

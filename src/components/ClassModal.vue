@@ -42,7 +42,7 @@ import { ref } from 'vue';
 
 
 
-<style scoped>
+<style>
 
     .input-div{
         display: flex;

@@ -1,6 +1,12 @@
 <template>
     <h1>Student List</h1>
-    <div v-for="students in studentList" :key="students">
+    <div class="header">
+        <div><p>Name</p></div>
+        <div><p>Id</p></div>
+        <div><p>Class</p></div>
+    </div>
+
+    <div class="studentList" v-for="students in studentList" :key="students">
         <!-- <ClassSingleList :classes="classes"/> -->
          <StudentSingleList :students="students"/>
     </div>
@@ -21,6 +27,21 @@
 </script>
 
 <style>
-
-
+    .header{
+        margin: 0 auto;
+        width: 30%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .header div{
+        width: 100px;
+        padding: 0;
+        margin: 0;
+    }
+    .header p{
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+    .studentList{
+    }
 </style>

@@ -1,7 +1,8 @@
 <template>
     <div class="backdrop" @click.self="closeModal">
         <div class="modal">
-            <button @click="closeModal" class="close-btn"><span class="material-symbols-outlined">close</span></button>
+            <h3>Add Student</h3>
+            <!-- <button @click="closeModal" class="close-btn"><span class="material-symbols-outlined">close</span></button> -->
             <!--Input div-->
             <div class="input-div">
                 <input v-model="name" type="text" placeholder="Name">

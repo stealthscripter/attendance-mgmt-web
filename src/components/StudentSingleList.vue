@@ -1,8 +1,8 @@
 <template>
-    <div :class="{present: status}" @click="attendToggle">
-        <p>{{ students.name }}</p>
-        <p>{{ students.id }}</p>
-        <p>{{ students.classid }}</p>
+    <div class="single-student-list">
+        <div class="name-div"><p class="name">{{ students.name }}</p></div>
+        <div class="id-div"><p class="id">{{ students.id }}</p></div>
+        <div class="class-div"><p class="class">{{ students.classid }}</p></div>
     </div>
 </template>
 
@@ -10,15 +10,8 @@
 import { ref } from 'vue';
 
     export default{
-        emits: ['attendToggle'],
-        props: ['students'],
-        setup(props ,{emits}){
-            const status = ref(false)
-            const attendToggle = () => {
-                status.value = !status.value           
-            }
-            return {status , attendToggle}
-        }
+        props: ['students']
+        
     }
 </script>
 
@@ -26,15 +19,23 @@ import { ref } from 'vue';
     div{
         cursor: pointer;
         padding: 10px;
-        margin: 0 auto;
+        margin: 1rem auto;
         width: fit-content;
-        border: 1px solid black;
     }
-    .present {
-        border: 2px solid green;
+    .single-student-list {
+        display: flex;
+        padding: 0;
+        width: 30%;
+        border: 1px solid red;
+        border-radius: 1rem;
+        justify-content: space-between;
     }
-    .absent {
-        border: 2px solid red;
+    .single-student-list div{
+        width: 100px;
+        padding: 0;
+        margin: 0
     }
-
+    p{
+        margin: 0.5rem;
+    }
 </style>

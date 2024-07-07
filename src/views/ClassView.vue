@@ -3,7 +3,7 @@
         <div v-if="showModal">
             <ClassModal @close="toggleModal" @add="addClass"/>
         </div>
-        <button @click="toggleModal">Add</button>
+        <button class="btn" @click="toggleModal">Add</button>
         <ClassList :classList="classList"/>
     </div>
 </template>
@@ -51,8 +51,8 @@
 </script>
 
 
-<style scoped>
-    button{
+<style>
+    .btn{
         font-family: 'Open Sans';
         font-size: 1rem;
         cursor: pointer;
