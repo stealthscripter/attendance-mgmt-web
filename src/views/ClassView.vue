@@ -3,7 +3,7 @@
         <div v-if="showModal">
             <ClassModal @close="toggleModal" @add="addClass"/>
         </div>
-        <button @click="toggleModal">Open</button>
+        <button @click="toggleModal">Add</button>
         <ClassList :classList="classList"/>
     </div>
 </template>
@@ -51,11 +51,18 @@
 </script>
 
 
-<style>
+<style scoped>
+    button{
+        font-family: 'Open Sans';
+        font-size: 1rem;
+        cursor: pointer;
+        border: none;
+        border-radius: 30px;
+        padding : 5px 20px;
+        margin: 0.5rem;
+    }
     .class{
-        padding: 1rem;
         margin: 1rem auto;
         width: 80%;
-        border: 1px solid red;
     }
 </style>

@@ -18,8 +18,8 @@ import ClassSingleList from './ClassSingleList.vue';
 
 <style>
 .class-list{
-    padding: 0.5rem;
-    border: 1px solid rebeccapurple;
+    margin: 0;
+    padding: 0;
 }
 
 </style>

@@ -1,8 +1,9 @@
 <template>
     <div class="backdrop" @click.self="closeModal">
         <div class="modal">
-            <button @click="closeModal" class="close-btn"><span class="material-symbols-outlined">close</span></button>
-            <!--Input div-->
+            <!-- <button @click="closeModal" class="close-btn"><span class="material-symbols-outlined">close</span></button> -->
+            <h3>Add Class</h3>
+                        <!--Input div-->
             <div class="input-div">
                 <input v-model="section" type="text" placeholder="Section">
                 <input v-model="course" type="text" placeholder="Course">
@@ -43,10 +44,41 @@ import { ref } from 'vue';
 
 <style scoped>
 
-    .close-btn{
+    .input-div{
+        display: flex;
+    }
+    .btn-div{
+        padding: 1rem;
+    }
+    .btn-div button{
+        font-family: 'Open Sans';
+        font-size: 1rem;
         cursor: pointer;
         border: none;
+        border-radius: 30px;
+        padding : 5px 20px;
+        margin: 0.5rem;
+    }
+    .btn-div button:hover{
+        background: rgb(72, 67, 67);
+        color: white;
+    }
+    .input-div input{
+        text-align: center;
+        border: none;
+        border-bottom: 1px solid black;
+        font-size: 1rem;
+        font-family: 'Open Sans';
+        outline: none;
+        padding: 3px 0;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .close-btn{
+        cursor: pointer;
         background: none;
+        border: none;
         float: right;
     }
     .backdrop{
@@ -58,11 +90,14 @@ import { ref } from 'vue';
         height: 100%;
     }
     .modal{
-        width: 400px;
-        padding: 20px;
+        width: 450px;
+        padding: 5px;
         margin: 100px auto;
         background: white;
         border-radius: 10px;
+    }
+    .modal h3{
+        font-weight: 600;
     }
 
 </style>

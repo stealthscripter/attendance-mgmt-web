@@ -9,6 +9,16 @@
       "id": "fc3e",
       "section": "H",
       "course": "Compiler Design"
+    },
+    {
+      "id": "7ccf",
+      "section": "H",
+      "course": "Java Advanced OOp"
+    },
+    {
+      "id": "ed12",
+      "section": "J",
+      "course": "Internet Programming"
     }
   ]
 }

@@ -1,10 +1,8 @@
 <template>
     <div class="single-class-list">
         <router-link :to="{name: 'StudentView' , params:{id: classes.id}}">
-            <div>
-                <p>{{ classes.course }}</p>
-                <p>{{ classes.section }}</p>
-            </div>
+                <div class="course"><p>{{ classes.course }}</p></div>
+                <div class="section"><p>{{ classes.section }}</p></div>
         </router-link>
     </div>
 </template>
@@ -24,11 +22,32 @@
         padding: 10px;
         margin: 1rem auto;
         width: fit-content;
-        border: 1px solid black;
     }
     .single-class-list {
-        width: 90%;
+        padding: 0;
+        width: 30%;
         border: 1px solid red;
+        border-radius: 1rem;
+    }
+    .single-class-list div{
+        padding: 0;
+        
+        margin: 0
+    }
+    a{
+        display: flex;
+        color: black;
+        text-decoration: none;
+        justify-content: space-between;
+    }
+    p{
+        margin: 0.5rem;
+    }
+    .course{
+        
+    }
+    .section{
+        margin-right: 1rem;
     }
 
 </style>
