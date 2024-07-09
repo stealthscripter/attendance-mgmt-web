@@ -2,7 +2,7 @@
     <h1>Yes Attendance</h1>
     <DatePick @updateDate="dateHandler"/>
     <p>Raw Date {{ myDate }}</p>
-    <AttendanceList v-if="showAttendance" @toggleStatus="toggleAttendance" :classStudents="studentWithStatus"/>
+    <AttendanceList v-if="showAttendance" @toggleStatus="toggleAttendance" :classStudents="finalData"/>
     <button @click="saveHandler">Save</button>
     <router-link :to="{name: 'attend' , params: {id: id}}">
         <button @click="viewHandler">View Attendance</button>
@@ -22,8 +22,6 @@ export default {
         const myDate = ref(new Date());
         const finalData = ref({ date: myDate.value, students: [] });
         const showAttendance = ref(false)
-
-        const studentWithStatus = ref([])
 
         onMounted(() => {
             fetch("http://localhost:3000/students")
@@ -49,7 +47,6 @@ export default {
                 }))
             };
             console.log(finalData.value);
-            studentWithStatus.value = finalData.value.students
         };
 
 
@@ -59,8 +56,6 @@ export default {
                 finalData.value.students[studentIndex].status = !finalData.value.students[studentIndex].status;
             }
             console.log(finalData.value);
-
-            studentWithStatus.value = finalData.value.students
         }
 
         const checkDate = async (date, classid) => {
@@ -91,7 +86,7 @@ export default {
             }
         };
 
-        return { classStudents, dateHandler, myDate, saveHandler, finalData, toggleAttendance ,showAttendance , studentWithStatus};
+        return { classStudents, dateHandler, myDate, saveHandler, finalData, toggleAttendance ,showAttendance};
     }
 }
 </script>
