@@ -1,8 +1,7 @@
 <template>
-    <h3>Attendance List</h3>
-    <div v-for="cls in classStudents.students" :key="cls.studentid">
-        <p @click="toggleAttendance(cls.studentid)">{{ cls.name }}</p>
-        <p>{{ cls.status }}</p>
+    <div v-for="cls in classStudents.students" @click="toggleAttendance(cls.studentid)" :key="cls.studentid" class="attendance-list" :class="{'present' : cls.status}">
+        <div class="name"><p>{{ cls.name }}</p></div>
+        <div class="status"><p>{{ cls.status == true ? 'Present' : 'Absent' }}</p></div>
     </div>
 </template>
 
@@ -22,10 +21,30 @@
 </script>
 
 <style scoped>
-p{
+div{
     cursor: pointer;
-    border: 1px solid rebeccapurple;
-    display: inline-block;
+    padding: 10px;
+    width: fit-content;
+    margin: 1rem auto;
+}
+.attendance-list{
+    display: flex;
+    color: black;
+    justify-content: space-between;
+    padding: 0;
+    width: 30%;
+    border: 1px solid red;
+    border-radius: 1rem;
+}
+.attendance-list div{
+    padding: 0;
+    margin: 0;
+}
+p{
+    margin: 0.5rem;
+}
+.present{
+    border: 1px solid green;
 }
 
 </style>

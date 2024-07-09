@@ -1,11 +1,12 @@
 <template>
-    <h1>Yes Attendance</h1>
+    <h3>Attendance Taker</h3>
+    <p>Choose Attendance Date First !</p>
     <DatePick @updateDate="dateHandler"/>
-    <p>Raw Date {{ myDate }}</p>
+    <p v-if="showAttendance">{{ myDate }}</p>
     <AttendanceList v-if="showAttendance" @toggleStatus="toggleAttendance" :classStudents="finalData"/>
-    <button @click="saveHandler">Save</button>
+    <button class="btn" @click="saveHandler">Save</button>
     <router-link :to="{name: 'attend' , params: {id: id}}">
-        <button @click="viewHandler">View Attendance</button>
+        <button class="btn" @click="viewHandler">View Attendance</button>
     </router-link>
 </template>
 

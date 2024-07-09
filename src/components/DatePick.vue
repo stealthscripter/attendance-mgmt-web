@@ -1,5 +1,4 @@
 <template>
-        <p>Choose Attendance Day</p>
         <input v-model="date" @input="updateDate" type="date" name="" id="">
 </template>
 
@@ -19,6 +18,9 @@
 
 </script>
 
-<style>
-
+<style scoped>
+    input{
+        display: block;
+        margin: 1rem auto;
+    }
 </style>
