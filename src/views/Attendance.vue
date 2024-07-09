@@ -2,7 +2,7 @@
     <h1>Yes Attendance</h1>
     <DatePick @updateDate="dateHandler"/>
     <p>Raw Date {{ myDate }}</p>
-    <AttendanceList @toggleStatus="toggleAttendance" :classStudents="classStudents"/>
+    <AttendanceList v-if="showAttendance" @toggleStatus="toggleAttendance" :classStudents="classStudents"/>
     <button @click="saveHandler">Save</button>
     <router-link :to="{name: 'attend' , params: {id: id}}">
         <button @click="viewHandler">View Attendance</button>
@@ -20,7 +20,9 @@ export default {
     setup(props) {
         const attendanceList = ref([]);
         const myDate = ref(new Date());
+        const propsStatus = ref([])
         const finalData = ref({ date: myDate.value, students: [] });
+        const showAttendance = ref(false)
 
         onMounted(() => {
             fetch("http://localhost:3000/students")
@@ -34,6 +36,7 @@ export default {
         });
 
         const dateHandler = data => {
+            showAttendance.value = true
             myDate.value = data;
             finalData.value = {
                 date: myDate.value,
@@ -44,8 +47,11 @@ export default {
                     studentid: student.id,
                 }))
             };
+            propsStatus.value.push(finalData.value.students)
             console.log(finalData.value);
+            console.log(propsStatus.value)
         };
+
 
         const toggleAttendance = (stud) => {
             const studentIndex = finalData.value.students.findIndex(student => student.studentid === stud.id);
@@ -58,6 +64,7 @@ export default {
                     studentid: stud.id,
                 });
             }
+            propsStatus.value = finalData.value.students.map(std => std.status)
             console.log(finalData.value);
         };
 
@@ -89,7 +96,7 @@ export default {
             }
         };
 
-        return { classStudents, dateHandler, myDate, saveHandler, finalData, toggleAttendance };
+        return { classStudents, dateHandler, myDate, saveHandler, finalData, toggleAttendance ,showAttendance , propsStatus};
     }
 }
 </script>

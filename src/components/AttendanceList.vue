@@ -24,6 +24,7 @@
 p{
     cursor: pointer;
     border: 1px solid rebeccapurple;
+    display: inline-block;
 }
 
 </style>
