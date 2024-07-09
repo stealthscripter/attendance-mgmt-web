@@ -2,7 +2,7 @@
     <h1>Yes Attendance</h1>
     <DatePick @updateDate="dateHandler"/>
     <p>Raw Date {{ myDate }}</p>
-    <AttendanceList v-if="showAttendance" @toggleStatus="toggleAttendance" :classStudents="classStudents"/>
+    <AttendanceList v-if="showAttendance" @toggleStatus="toggleAttendance" :classStudents="studentWithStatus"/>
     <button @click="saveHandler">Save</button>
     <router-link :to="{name: 'attend' , params: {id: id}}">
         <button @click="viewHandler">View Attendance</button>
@@ -20,9 +20,10 @@ export default {
     setup(props) {
         const attendanceList = ref([]);
         const myDate = ref(new Date());
-        const propsStatus = ref([])
         const finalData = ref({ date: myDate.value, students: [] });
         const showAttendance = ref(false)
+
+        const studentWithStatus = ref([])
 
         onMounted(() => {
             fetch("http://localhost:3000/students")
@@ -47,26 +48,20 @@ export default {
                     studentid: student.id,
                 }))
             };
-            propsStatus.value.push(finalData.value.students)
             console.log(finalData.value);
-            console.log(propsStatus.value)
+            studentWithStatus.value = finalData.value.students
         };
 
 
-        const toggleAttendance = (stud) => {
-            const studentIndex = finalData.value.students.findIndex(student => student.studentid === stud.id);
+        const toggleAttendance = (studentID) => {
+            const studentIndex = finalData.value.students.findIndex(student => student.studentid === studentID);
             if (studentIndex !== -1) {
                 finalData.value.students[studentIndex].status = !finalData.value.students[studentIndex].status;
-            } else {
-                finalData.value.students.push({
-                    name: stud.name,
-                    status: true,
-                    studentid: stud.id,
-                });
             }
-            propsStatus.value = finalData.value.students.map(std => std.status)
             console.log(finalData.value);
-        };
+
+            studentWithStatus.value = finalData.value.students
+        }
 
         const checkDate = async (date, classid) => {
             const response = await fetch("http://localhost:5000/attendance");
@@ -74,7 +69,7 @@ export default {
             return data.some(record => 
                 new Date(record.date).toDateString() === new Date(date).toDateString() && record.classid === classid
             );
-        };
+        }
 
         const saveHandler = async () => {
             const dateExists = await checkDate(finalData.value.date, props.id);
@@ -96,7 +91,7 @@ export default {
             }
         };
 
-        return { classStudents, dateHandler, myDate, saveHandler, finalData, toggleAttendance ,showAttendance , propsStatus};
+        return { classStudents, dateHandler, myDate, saveHandler, finalData, toggleAttendance ,showAttendance , studentWithStatus};
     }
 }
 </script>

@@ -1,7 +1,8 @@
 <template>
     <h3>Attendance List</h3>
     <div v-for="cls in classStudents" :key="cls.studentid">
-        <p @click="toggleAttendance(cls)">{{ cls.name }}</p>
+        <p @click="toggleAttendance(cls.studentid)">{{ cls.name }}</p>
+        <p>{{ cls.status }}</p>
     </div>
 </template>
 
