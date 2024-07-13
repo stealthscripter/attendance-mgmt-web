@@ -14,12 +14,10 @@
   font-family: Raleway, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 
 nav {
-  border: 1px solid black;
   padding: 1rem;
 }
 
@@ -31,7 +29,6 @@ nav a {
   color: #2c3e50;
 }
 ul{
-  border: 1px solid black;
   justify-content: center;
   display: flex;
   padding: 1rem;
