@@ -16,22 +16,12 @@
       </div>
 
       <div class="right-home">
-        <div class="img1">
-          <img src="@/assets/undraw_scrum_board_re_wk7v.svg" alt="" class="svg-img">
-        </div>
         <!-- <div>
             <router-link :to="{name: 'classView'}"><button>Create Class</button></router-link>
         </div> -->
       </div>
-
   </div>
-  
-  <!-- <div class="home">
-    <h1>Hello</h1>
-    <router-link :to="{name: 'classView'}">
-        <button>Class</button>
-    </router-link>
-  </div> -->
+  >
 </template>
 
 <script>
@@ -47,12 +37,18 @@ export default {
   *{
      font-family: "Raleway";
   }
+  .home div{
+    flex: 1;
+  }
   .left-home div{
-    width: 50%;
+    width: 80%;
   }
   p{
-
       font-size: small;
+  }
+  .right-home p{
+    font-size: 1rem;
+    margin: 0;
   }
   .description {
     margin-top: 1rem;
@@ -68,7 +64,9 @@ export default {
   }
   .svg-img{
     margin: 0;
-    width: 40%;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
   }
   .home{
     gap: 10px;
@@ -78,16 +76,8 @@ export default {
   .left-home{
     padding: 1rem;
     border: 1px solid black;
-    /* flex-grow: 1; */
+    flex-grow: 1;
     width: fit-content;
-  }
-  .right-home{
-    padding: 1rem;
-    flex-direction: column;
-    display: flex;
-    border: 1px solid black;
-    align-items: center;
-    
   }
   .btn-start{
      border-radius: 0.4rem;
@@ -97,11 +87,32 @@ export default {
      cursor: pointer;
      font-weight: 400;
   }
-  .img1{
-    width: fit-content;
-    border: 1px solid black;
+  .right-home{
+    padding: 1rem;
+    border: 1px solid black;    
   }
-  
+  .img1 , .img2 , .img3{
+    /* border: 1px solid blue; */
+    text-align: center;
+  }
+  .img-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .img1{
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+  .img2{
+    grid-column-start: 3;
+    grid-column-end: 4;
+  }
+  .img3{
+    margin-left: 2rem;
+    grid-row-start: 2;
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
   .right-home div{
 
   }
