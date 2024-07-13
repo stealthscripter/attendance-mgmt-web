@@ -1,5 +1,5 @@
 <template>
-
+  <NavBar/>
   <div class="home">      
       <div class="left-home">
           <p>Attendance Management</p>
@@ -9,31 +9,69 @@
           </div>
 
           <div>
-            <button class="btn-start">Get Started</button>
+            <router-link :to="{name: 'classView'}"><button class="btn-start">Get Started</button></router-link>
+            
           </div>
           
-          <!-- <h2>Hey Welcome to attendance Management System</h2> -->
       </div>
 
       <div class="right-home">
-        <!-- <div>
-            <router-link :to="{name: 'classView'}"><button>Create Class</button></router-link>
-        </div> -->
+        <div class="img-div">
+          <img src="@/assets/undraw_educator_re_ju47.svg" alt="" class="svg-img">
+        </div>
       </div>
   </div>
-  >
+
+  
+  <section class="sec2">
+    <p>216,000+ students in over 13 Universities enhance their learning experience with our attendance system</p>
+    <div class="sec2-div">
+        <div class="logo-div">
+          <img src="@/assets/aau.png" alt="" class="logo-img">
+          <img src="@/assets/adama.png" alt="" class="logo-img">
+          <img src="@/assets/unity.png" alt="" class="logo-img">
+          <img src="@/assets/saintmary.png" alt="" class="logo-img">
+        </div>
+      </div>
+  </section>
+
 </template>
 
 <script>
-// @ is an alias to /src
-
+import NavBar from '@/components/NavBar.vue'
 export default {
+  components: {NavBar},
   name: 'HomeView',
 }
 </script>
 
 
 <style scoped>
+.logo-img{
+  max-width: 80px;  
+  max-height: 80px; 
+  width: auto;       
+  height: auto;      
+  margin: 0 10px; 
+}
+  .sec2-div{
+    display: flex;
+    /* border: 4px dotted sienna; */
+  }
+  .sec2 {
+    padding: 1rem;
+     margin-top: 1rem;
+    }
+    .logo-div{
+        margin: 0 auto;
+        
+    }
+    .sec2 p{
+      font-family: "Open Sans";
+      font-size: 1rem;
+      text-align: center;
+    }
+
   *{
      font-family: "Raleway";
   }
@@ -53,7 +91,7 @@ export default {
   .description {
     margin-top: 1rem;
     line-height: 1.8rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   h2{
      font-size: 2.4rem;
@@ -66,54 +104,40 @@ export default {
     margin: 0;
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    object-fit: cover;
   }
   .home{
     gap: 10px;
-    margin: 1rem;
     display: flex;
+    background: #6352;
   }
   .left-home{
     padding: 1rem;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     flex-grow: 1;
     width: fit-content;
   }
   .btn-start{
      border-radius: 0.4rem;
-     border: none;
-     font-size: 1rem;
+     border: 2px dashed blueviolet ;
+     font-size: 0.8rem;
      padding: 10px 20px;
      cursor: pointer;
-     font-weight: 400;
+     font-weight: 600;
+     background: none;
+  }
+  .btn-start:hover{
+    background: rgb(193, 183, 183);
+    transition: ease-out;
+    transition-delay: 100ms;
   }
   .right-home{
     padding: 1rem;
-    border: 1px solid black;    
+    /* border: 1px solid black;     */
   }
-  .img1 , .img2 , .img3{
-    /* border: 1px solid blue; */
-    text-align: center;
-  }
-  .img-grid{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .img1{
-    grid-column-start: 1;
-    grid-column-end: 2;
-  }
-  .img2{
-    grid-column-start: 3;
-    grid-column-end: 4;
-  }
-  .img3{
-    margin-left: 2rem;
-    grid-row-start: 2;
-    grid-column-start: 2;
-    grid-column-end: 3;
-  }
-  .right-home div{
-
+  .img-div{
+    /* border: 1px solid black; */
+    width: 70%;
+    margin: 0 auto;
   }
 </style>

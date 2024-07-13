@@ -1,4 +1,8 @@
 <template>
+<section class="sec-class">
+    <div class="header">
+        <p>Class Management</p>
+    </div>
     <div class="class">
         <div v-if="showModal">
             <ClassModal @close="toggleModal" @add="addClass"/>
@@ -6,6 +10,7 @@
         <button class="btn" @click="toggleModal">Add</button>
         <ClassList :classList="classList"/>
     </div>
+</section>
 </template>
 
 
@@ -51,18 +56,18 @@
 </script>
 
 
-<style>
-    .btn{
-        font-family: 'Open Sans';
-        font-size: 1rem;
-        cursor: pointer;
-        border: none;
-        border-radius: 30px;
-        padding : 5px 20px;
-        margin: 0.5rem;
+<style scoped>
+    .sec-class{
+        border: 1px solid black;
+    }
+    .header{
+        margin: 2rem auto;
+        border: 1px solid blue;
+        text-align: center;
     }
     .class{
-        margin: 1rem auto;
-        width: 80%;
+        margin: 5rem;
+        border: 1px solid saddlebrown;
     }
+    
 </style>
