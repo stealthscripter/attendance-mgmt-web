@@ -43,10 +43,19 @@
             }
 
             onMounted (() => {
-                fetch("http://localhost:4000/classes")
-                .then(res => res.json())
-                .then(data => classList.value = data)
-                .catch(err => console.log(err.message))
+                const request = new XMLHttpRequest()
+                
+                request.addEventListener('readystatechange',()=>{
+                    if(request.readyState == 4){
+                        classList.value = JSON.parse(request.responseText)
+                        console.log(request.responseText)
+                    }
+                })
+                
+
+                request.open('GET',"http://localhost:4000/classes")
+                request.send()
+
             })
    
             return {toggleModal , showModal , addClass , classList}
