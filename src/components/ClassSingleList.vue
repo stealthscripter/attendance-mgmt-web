@@ -25,14 +25,18 @@
     }
     .single-class-list {
         padding: 0;
+        margin: 0 auto;
         width: 30%;
-        border: 1px solid red;
-        border-radius: 1rem;
+        border-bottom: 1px solid black;
+        
     }
     .single-class-list div{
         padding: 0;
-        
-        margin: 0
+        margin: 0.5rem;
+    }
+    .single-class-list:hover p{
+        text-decoration: underline;
+        color: black;
     }
     a{
         display: flex;
@@ -43,11 +47,5 @@
     p{
         margin: 0.5rem;
     }
-    .course{
-        
-    }
-    .section{
-        margin-right: 1rem;
-    }
-
+    
 </style>

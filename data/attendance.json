@@ -87,6 +87,40 @@
           "studentid": "2611"
         }
       ]
+    },
+    {
+      "id": "7d61",
+      "date": "2024-07-14",
+      "classid": "61ef",
+      "students": [
+        {
+          "name": "Abel Yifu",
+          "status": true,
+          "studentid": "6252"
+        },
+        {
+          "name": "Babi",
+          "status": true,
+          "studentid": "7623"
+        }
+      ]
+    },
+    {
+      "id": "34e8",
+      "date": "2024-07-15",
+      "classid": "61ef",
+      "students": [
+        {
+          "name": "Abel Yifu",
+          "status": true,
+          "studentid": "6252"
+        },
+        {
+          "name": "Babi",
+          "status": false,
+          "studentid": "7623"
+        }
+      ]
     }
   ]
 }

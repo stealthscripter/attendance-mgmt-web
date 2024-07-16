@@ -1,13 +1,11 @@
 <template>
 <section class="sec-class">
-    <div class="header">
-        <p>Class Management</p>
-    </div>
     <div class="class">
+        <h1>Add Class</h1>
         <div v-if="showModal">
             <ClassModal @close="toggleModal" @add="addClass"/>
         </div>
-        <button class="btn" @click="toggleModal">Add</button>
+        <button class="add-btn" @click="toggleModal"><PhPlusCircle :size="32" weight="light"/></button>
         <ClassList :classList="classList"/>
     </div>
 </section>
@@ -15,6 +13,7 @@
 
 
 <script>
+    
     import ClassList from '@/components/ClassList.vue';
     import ClassModal from '@/components/ClassModal.vue';
     import { onMounted, onUpdated, ref } from 'vue';
@@ -57,17 +56,21 @@
 
 
 <style scoped>
-    .sec-class{
-        border: 1px solid black;
-    }
-    .header{
-        margin: 2rem auto;
-        border: 1px solid blue;
-        text-align: center;
-    }
-    .class{
-        margin: 5rem;
-        border: 1px solid saddlebrown;
-    }
-    
+.sec-class {
+  border: 1px solid slateblue;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  text-align: center;
+}
+
+.add-btn {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.class {
+  margin: 3rem;
+}
 </style>
