@@ -6,19 +6,27 @@
             <ClassModal @close="toggleModal" @add="addClass"/>
         </div>
         <button class="add-btn" @click="toggleModal"><PhPlusCircle :size="32" weight="light"/></button>
-        <ClassList :classList="classList"/>
+        
+        <div v-if="classList.length">
+            <ClassList :classList="classList"/>
+        </div>
+        <div v-else>
+            <Spinner/>
+        </div>
     </div>
 </section>
 </template>
 
 
 <script>
-    
+    import Spinner from '@/components/Spinner.vue'
+
+    // import getClasses from '@/composable/getClass';
     import ClassList from '@/components/ClassList.vue';
     import ClassModal from '@/components/ClassModal.vue';
     import { onMounted, onUpdated, ref } from 'vue';
     export default {
-        components: {ClassModal , ClassList},
+        components: {ClassModal , ClassList , Spinner},
         setup(){
             const showModal = ref(false)
             const classList = ref([])
@@ -43,19 +51,10 @@
             }
 
             onMounted (() => {
-                const request = new XMLHttpRequest()
-                
-                request.addEventListener('readystatechange',()=>{
-                    if(request.readyState == 4){
-                        classList.value = JSON.parse(request.responseText)
-                        console.log(request.responseText)
-                    }
-                })
-                
-
-                request.open('GET',"http://localhost:4000/classes")
-                request.send()
-
+                fetch("http://localhost:4000/classes")
+                .then(res => res.json())
+                .then(data => classList.value = data)
+                .catch(err => console.log("Reject Promose"))
             })
    
             return {toggleModal , showModal , addClass , classList}
